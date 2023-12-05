@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result - yojanaKHOJ</title>
+</head>
+<body>
+    <h1>Matching Schemes</h1>
+    <div id="schemeList">
+        <!-- Scheme results will be displayed here using JavaScript -->
+    </div>
+
+    <script>
+        // Retrieve user input from local storage
+        var userInput = JSON.parse(localStorage.getItem('userInput'));
+
+        // Simulated matching schemes data (replace with your actual data)
+        var schemes = [
+            {
+                code: "Scheme1",
+                name: "Scheme One",
+                beneficiaries: "Beneficiaries 1",
+                benefits: "Benefits 1",
+            },
+            {
+                code: "Scheme2",
+                name: "Scheme Two",
+                beneficiaries: "Beneficiaries 2",
+                benefits: "Benefits 2",
+            },
+            // Add more schemes as needed
+        ];
+
+        // Filter schemes based on user input (you should replace this with your actual filtering logic)
+        var matchingSchemes = schemes.filter(function (scheme) {
+            return scheme.income <= userInput.income;
+        });
+
+        // Display the matching schemes
+        var schemeList = document.getElementById("schemeList");
+
+        if (matchingSchemes.length > 0) {
+            matchingSchemes.forEach(function (scheme, index) {
+                var schemeItem = document.createElement("div");
+                schemeItem.innerHTML = `
+                    <h2>Scheme Code: ${scheme.code}</h2>
+                    <p>Scheme Name: ${scheme.name}</p>
+                    <p>Beneficiaries: ${scheme.beneficiaries}</p>
+                    <p>Benefits: ${scheme.benefits}</p>
+                `;
+                schemeList.appendChild(schemeItem);
+            });
+        } else {
+            schemeList.innerHTML = "<p>No matching schemes found.</p>";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- output.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation Output</title>
+</head>
+<body>
+    <h2>Matching Schemes with Income Less than or Equal to Your Income:</h2>
+    <% List<Scheme> matchingSchemes = (List<Scheme>)request.getAttribute("matchingSchemes"); %>
+    <% if (matchingSchemes != null && !matchingSchemes.isEmpty()) { %>
+        <% for (Scheme scheme : matchingSchemes) { %>
+            <p><strong>Scheme Code:</strong> <%= scheme.getSchemeCode() %></p>
+            <p><strong>Scheme Name:</strong> <%= scheme.getSchemeName() %></p>
+            <p><strong>Similarity Score:</strong> <%= scheme.getSimilarityScore() %></p>
+            <hr/>
+        <% } %>
+    <% } else { %>
+        <p>No matching schemes found.</p>
+    <% } %>
+
+    <h2>Recommended Scheme:</h2>
+    <% Scheme bestScheme = (Scheme)request.getAttribute("bestScheme"); %>
+    <p><strong>Scheme Code:</strong> <%= bestScheme.getSchemeCode() %></p>
+    <p><strong>Scheme Name:</strong> <%= bestScheme.getSchemeName() %></p>
+    <p><strong>Similarity Score:</strong> <%= bestScheme.getSimilarityScore() %></p>
+</body>
+</html>

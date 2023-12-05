@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+    <display-name>eYojanaConnectSystem</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <description></description>
+        <display-name>SchemeMatcher</display-name>
+        <servlet-name>SchemeMatcher</servlet-name>
+        <servlet-class>SchemeMatcher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SchemeMatcher</servlet-name>
+        <url-pattern>/SchemeMatcher</url-pattern>
+        <url-pattern>/SchemeMatcher/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Context parameter for schemes.csv file location -->
+    <context-param>
+        <param-name>schemes-file-location</param-name>
+        <param-value>C:\Users\avnig\eclipse-workspace\eYojanaConnectSystem\src\main\java\schemes.csv</param-value>
+    </context-param>
+</web-app>

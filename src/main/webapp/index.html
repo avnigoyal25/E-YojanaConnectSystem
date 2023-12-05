@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>yojanaKHOJ</title>
+    
+  </head>
+  <style>
+    /* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ff9933, #ffffff, #138808);
+}
+
+
+.logo-header {
+  display: flex;
+  align-items: center;
+  background-color:transparent;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  width: 200px;
+  height: 90px;
+  margin-right: 10px;
+}
+
+.logo-title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 20px 0;
+  margin-top: 80px; 
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  background: transparent;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.navbar a {
+  color: #000000;
+  text-decoration: none;
+  margin: 10px 10px;
+}
+
+.user-profile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: transparent;
+  color: #ffffff;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.user-profile img {
+  width: 50px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top:40px;
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(43, 0, 255);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+
+
+
+
+
+.chat-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px 8px 0 0;
+}
+
+.chat-content {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.bot-message {
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.chat-input {
+  display: block;
+  align-items: center;
+  padding: 10px;
+  margin-right: auto;
+}
+
+#userInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+#sendBtn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#closeBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+  </style>
+  <body>
+
+    <div class="navbar">
+      <a href="#">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
+      <div class="user-profile">
+        <img src="https://static.vecteezy.com/system/resources/previews/019/879/198/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Profile" />
+      </div>
+    </div>
+    <div class="logo-header">
+      <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="SchemeMatcher" method="post" class="form">
+        <div class="input-box">
+          <label>Age</label>
+          <input type="text" placeholder="Enter age" required name=htmlage />
+        </div>
+
+        <div class="input-box">
+          <label>Income</label>
+          <input type="text" placeholder="Enter annual income" required name=htmlincome />
+        </div>
+
+
+        <div class="input-box">
+          <label>Caste</label>
+          <input type="text" placeholder="Enter caste (General, SC, ST, OBC)" required  name=htmlcaste />
+        </div>
+        
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender"  value="male"/>Male
+              
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" value="female"/>Female
+              
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" value="other"/>other
+              
+            </div>
+          </div>
+        </div>
+        <div class="minority-box">
+          <h3>Minority group</h3>
+          <div class="minority-option">
+            <div class="minority">
+              <input type="radio" id="check-yes" name="minority"  value="yes"/>Yes
+            </div>
+            <div class="minority">
+              <input type="radio" id="check-no" name="minority" value="no"/>No
+              
+            </div>
+          </div>
+        </div>
+        <div class="physcially-box">
+          <h3>Physcially Challenged</h3>
+          <div class="physcially-option">
+            <div class="physcially">
+              <input type="radio" id="check-yes" name="physcially" value="yes"/>Yes
+              
+            </div>
+            <div class="physcially">
+              <input type="radio" id="check-no" name="physcially" value="no"/>No
+            
+            </div>
+          </div>
+        </div>
+          <!-- Your input fields and other form elements -->
+          <button type=submit>Find the best yojana</button>
+      </form>
+    </section>
+    
+
+<!--Chatbot-->
+
+    <div class="chat-icon" id="chatIcon">
+      <img src="chatbot-icon-removebg-preview.png" width = "100px" height = "100px" alt="Chat Icon">
+    </div>
+    <div class="chat-popup" id="chatPopup">
+      <div class="chat-header">
+        <span>Sahayak</span>
+        <button id="closeBtn">Close</button>
+      </div>
+      <div class="chat-content" id="chatContent">
+        <div class="bot-message">Welcome!!</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+
+
+    <footer style="position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: #fff; text-align: center;">
+      <p>All rights reserved to Mahak, Avni & Manas</p>
+    </footer>
+
+
+
+
+
+  </body>
+</html>

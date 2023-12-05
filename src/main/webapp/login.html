@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register to Yojana</title>
+	<link rel="stylesheet" type="text/css" href="login.css">
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+	<script>
+		function generateOTP() {
+			const digits = '0123456789';
+			let otp = '';
+			for (let i = 0; i < 6; i++) {
+				const randomIndex = Math.floor(Math.random() * digits.length);
+				otp += digits[randomIndex];
+			}
+			return otp;
+		}
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const signupForm = document.querySelector('.signup form');
+			const loginForm = document.querySelector('.login form');
+			const otpDisplay = document.querySelector('.otp-display');
+
+			signupForm.addEventListener('submit', (event) => {
+				event.preventDefault();
+				const otp = generateOTP();
+				otpDisplay.textContent = `Your OTP: ${otp}`;
+			});
+
+			loginForm.addEventListener('submit', (event) => {
+				event.preventDefault();
+				const otpInput = document.querySelector('.login input[name="otp"]');
+				const enteredOTP = otpInput.value;
+				const generatedOTP = otpDisplay.textContent.split(' ')[2];
+
+				if (enteredOTP === generatedOTP) {
+					alert('OTP is valid. You are logged in.');
+					otpInput.value = '';
+                    window.location.href = "http://127.0.0.1:5501/main.html";
+				} else {
+					alert('Invalid OTP. Please try again.');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="logo-header">
+		<img src="Yojana logo.png" alt="Logo" class="logo" />
+	  </div>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Sign up</button>
+				</form>
+			</div>
+
+      <div class="login">
+        <form>
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <input type="text" name="otp" placeholder="Enter OTP" required="">
+                <button>Login</button>
+        </form>
+    </div>
+
+			
+	</div>
+
+  
+
+	<div class="otp-display"></div>
+</body>
+</html>
